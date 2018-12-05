@@ -28,10 +28,10 @@ public class TestRateControlController {
     @ResponseBody
     public String test() {
         // 这里用一个简单的计数器在页面上显示测试一下而已
-        RedisAtomicInteger entityIdCounter = new RedisAtomicInteger("testCnt", redisTemplate.getConnectionFactory());
+        RedisAtomicInteger testCnt = new RedisAtomicInteger("testCnt", redisTemplate.getConnectionFactory());
 
         String date = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS");
 
-        return date + " number of successful calling test controller ：" + entityIdCounter.getAndIncrement();
+        return date + " number of successful calling test controller ：" + testCnt.getAndIncrement();
     }
 }
